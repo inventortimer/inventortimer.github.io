@@ -99,20 +99,14 @@ var endTime = curTime.getTime() + (myFullTime * 60 * 1000) // convert minutes in
 function updateTimer(d) {
   d = d ? new Date(d) : new Date()
   var delta = endTime - d.getTime()
+  if (delta <= 0){
+    document.getElementById('alert_sound').play();
+    alert("Час вийшов!");
+  }
   var timeGone = (myFullTime - delta/(1000*60))
   var curStep = Math.ceil(timeGone/timePerStep)
 
-  //window.alert(delta);
   var symbols
-  // var hours = Math.floor(delta / HOUR)
-  //  , minutes = Math.floor((delta % HOUR) / MINUTE)
-  //  , seconds = Math.floor((delta % MINUTE) / SECOND)
-  //  , symbols
-
-  //var hours = d.getHours()
-  //  , minutes = d.getMinutes()
-  //  , seconds = d.getSeconds()
-  //  , symbols
 
   function pad(n) {
     n = n.toString()
